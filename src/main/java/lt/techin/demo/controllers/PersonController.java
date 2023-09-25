@@ -17,15 +17,15 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
-//    @GetMapping("/people")
-//    public List<String> getPeople() {
-//        return people;
-//    }
-//
-//    @GetMapping("/people/{index}")
-//    public String getPerson(@PathVariable int index) {
-//        return people.get(index);
-//    }
+    @GetMapping("/people")
+    public List<Person> getPeople() {
+        return personRepository.findAll();
+    }
+
+    @GetMapping("/people/{id}")
+    public Person getPerson(@PathVariable int id) {
+        return personRepository.findById(id).get();
+    }
 
     @PostMapping("/people")
     public void addPerson(@RequestBody Person person) {
