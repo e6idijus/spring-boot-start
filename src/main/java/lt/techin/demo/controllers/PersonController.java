@@ -51,10 +51,10 @@ public class PersonController {
         }
         return personRepository.save(updatedPerson);
     }
-//
-//    @DeleteMapping("/people/{index}")
-//    public void deletePerson(@PathVariable int index) {
-//        people.remove(index);
-//    }
+
+    @DeleteMapping("/people/{id}")
+    public void deletePerson(@PathVariable int id) {
+        personRepository.deleteById(id);
+    }
 
 }
