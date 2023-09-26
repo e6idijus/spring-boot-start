@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -32,10 +33,17 @@ public class PersonController {
         personRepository.save(person);
     }
 
-//    @PutMapping("/people/{index}")
-//    public void updatePerson(@PathVariable int index, @RequestBody String name) {
-//        people.set(index, name);
-//    }
+    @PutMapping("/people/{id}")
+    public Person updatePerson(@PathVariable int id, @RequestBody Person updatedPerson) {
+        Optional<Person> personFromDb = personRepository.findById(id);
+        if (personFromDb.isPresent()) {
+            Person person = personFromDb.get();
+            person.setFirstName(updatedPerson.getFirstName());
+            person.setLastName(updatedPerson.getLastName());
+            return personRepository.save(person);
+        }
+        return personRepository.save(updatedPerson);
+    }
 //
 //    @DeleteMapping("/people/{index}")
 //    public void deletePerson(@PathVariable int index) {
