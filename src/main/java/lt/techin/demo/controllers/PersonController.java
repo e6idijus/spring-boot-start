@@ -38,8 +38,15 @@ public class PersonController {
         Optional<Person> personFromDb = personRepository.findById(id);
         if (personFromDb.isPresent()) {
             Person person = personFromDb.get();
-            person.setFirstName(updatedPerson.getFirstName());
-            person.setLastName(updatedPerson.getLastName());
+
+            if (updatedPerson.getFirstName() != null) {
+                person.setFirstName(updatedPerson.getFirstName());
+            }
+
+            if (updatedPerson.getLastName() != null) {
+                person.setLastName(updatedPerson.getLastName());
+            }
+
             return personRepository.save(person);
         }
         return personRepository.save(updatedPerson);
