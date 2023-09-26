@@ -12,14 +12,6 @@ public class PhoneNumber {
 
     private String phoneNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "Person_id")
-    private Person person;
-
-    public int getId() {
-        return id;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -28,11 +20,4 @@ public class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 }

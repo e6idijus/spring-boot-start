@@ -2,6 +2,8 @@ package lt.techin.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "People")
 public class Person {
@@ -12,6 +14,10 @@ public class Person {
     private String firstName;
 
     private String lastName;
+
+    @OneToMany
+    @JoinColumn(name = "Person_id")
+    private List<PhoneNumber> phoneNumbers;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
