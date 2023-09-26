@@ -20,4 +20,11 @@ public class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

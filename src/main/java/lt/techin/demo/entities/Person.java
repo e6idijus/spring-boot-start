@@ -15,7 +15,7 @@ public class Person {
 
     private String lastName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "Person_id")
     private List<PhoneNumber> phoneNumbers;
 
@@ -39,12 +39,21 @@ public class Person {
         return lastName;
     }
 
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", phoneNumbers=" + phoneNumbers +
                 '}';
     }
 }
