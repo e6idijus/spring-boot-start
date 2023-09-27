@@ -1,6 +1,8 @@
 package lt.techin.demo.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -11,12 +13,19 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
+    @NotEmpty
     private String firstName;
 
+    @NotNull
+    @NotEmpty
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Person_id")
+    @JoinColumn(name = "Person_id", nullable = false)
+    @NotNull
+    @NotEmpty
     private List<PhoneNumber> phoneNumbers;
 
     public void setFirstName(String firstName) {

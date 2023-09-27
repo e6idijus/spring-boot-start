@@ -1,6 +1,8 @@
 package lt.techin.demo.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Phone_numbers")
@@ -10,6 +12,8 @@ public class PhoneNumber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @NotEmpty
     private String phoneNumber;
 
     public String getPhoneNumber() {
