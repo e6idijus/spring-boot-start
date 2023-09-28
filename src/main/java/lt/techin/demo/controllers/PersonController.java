@@ -12,9 +12,9 @@ import java.util.Optional;
 @RestController
 public class PersonController {
 
-    @Autowired
     private final PersonRepository personRepository;
 
+    @Autowired
     public PersonController(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
